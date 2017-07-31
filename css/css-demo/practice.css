@@ -9,3 +9,15 @@
   margin-top:5px;
   margin-bottom: 10px;
 }
+
+.list {
+  font-size: .8em;
+}
+
+.job:hover {
+  background-color: gold;
+}
+
+.list li:first-child {
+  color: blue;
+}
