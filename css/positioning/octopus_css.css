@@ -1,0 +1,28 @@
+
+.container {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    margin: auto;
+}
+
+#octopus {
+    z-index: 0;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+}
+
+#glasses {
+    z-index: 1;
+    position: absolute;
+    top: 45%;
+    left: 28%;
+}
+
+#hat {
+    z-index: 1;
+    position: absolute;
+    top: 5%;
+    left: 8%;
+}
