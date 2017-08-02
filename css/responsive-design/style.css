@@ -1,11 +1,13 @@
 body{
   max-width: 960px;
+  margin: auto;
 }
 
 #external-links{
   width: 20%;
   display: inline-block;
   vertical-align: top;
+  min-width: 200px;
 }
 
 #maincontent{
@@ -46,6 +48,16 @@ figure {
 figcaption {
   font-style: italic;
   text-align: right;
+}
+
+@media screen and (max-width: 500px) {
+  #external-links{
+  padding: 3%;
+    }
+
+  h1{
+    font-size: 20px;
+    }
 }
 
 /*@media screen and (max-width: 500px) {
