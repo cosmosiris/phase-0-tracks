@@ -1,0 +1,9 @@
+Name at least three categories of CSS adjustments (example: colors)?
+  Texts and fonts, colors and backgrounds, the box model, tables, the box model(margins, padding, and borders)
+
+What are the three ways to link a CSS rule to an HTML document? Which one is the best and why?
+What is a selector? Give examples of at least three types of selectors.
+What is the box model?
+Explain and give an example of the cascading effect of CSS.
+Name two CSS techniques that assist in responsive design.
+Rubric
