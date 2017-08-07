@@ -20,14 +20,15 @@ II.What are the three ways to link a CSS rule to an HTML document? Which one is 
   4)The best way to link a CSS rule to an html document is by inserting a link to a separate css file. This allows for faster changes to the style/formatting because you can simply change the css document alone without having to change all the other files it is tied to. Also, separating the html files from the css file can slow down browser speed on a website. Each time a user goes to another page on the website, the new html has to be downloaded. If that html is really long because it has css embedded in it, then it will take longer for the page to download.
 
 III. What is a selector? Give examples of at least three types of selectors.
-  A selector is a keyword that defines the elements that a set of CSS rules must apply to. Three types of selectors are the simple selector(class, id), psuedoselectors, and psuedo classes
+  A selector is a keyword that defines the elements that a set of CSS rules must apply to. Three types of selectors are the simple selectors(class & id), psuedoselectors, and psuedo classes
 
 IV. What is the box model?
-  The box madel is a box that wraps around every html element. This box can be manipulated by changing the margin, border, padding, and/or content of the box.
+  The box model is a box that wraps around every html element. This box can be manipulated by changing the margin, border, padding, and/or content of the box.
 
 V. Explain and give an example of the cascading effect of CSS.
-  Cascading in CSS just means that if an element is being given more than one styling instruction, the html(S) prioritize the CSS instructions in a certain order. For example, the computer will look at importance first, then specificity, and then source order.
+  Cascading in CSS just means that if an element is being given more than one styling instruction, the html(s) prioritize the CSS instructions in a certain order. For example, the computer will look at importance first, then specificity, and then source order. Let's say you give a style to the body and then add an id to the headers inside that body. The styles given to the id will overide the styles given to the body because an id is ranked as having a higher specificity.
 
 VI. Name two CSS techniques that assist in responsive design.
-
-
+  1. Set the viewport using a meta tag which will instruct the browser to set the width of a page to follow the screen-width of device it is being viewed on.
+  2. A Media query will set a rule so that once the size of a screen falls below a certain sizze, the CSS rules will change.
+  3. Using percentages with the width property allows a page's width to adjust based on the size of the screen
