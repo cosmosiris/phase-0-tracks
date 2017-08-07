@@ -1,3 +1,4 @@
+Elevator Algorithm
 1. Identify the first digit of the number for the floor of your destination.
 2. Identify an elevator button (start with the botton on the bottom left corner).
 3. Check if the first digit on the button equals the first digit of your floor number.
@@ -5,3 +6,13 @@
   -If it matches then check that the second digit of the elevator button matches the second digit of your floor destination
     -If the second digit matches then press that button
     -If the second digit does not match then go to the next button and repeat step 3
+
+Common Task Algorithm: Make a cup of hot coffee
+1. Take coffee and sugar container out of cubpoard
+2. Take soy milk out of fridge
+3. Take cup out of cupboard
+4. Poor soy milk into cup until the cup is halfway full
+5. Put cup in microwave and set timer for 1 minute
+6. When microwave timer goes off, remove the cup from the microwave
+7. Place 1 tbsp of coffee inside the cup and stir into the milk
+8. Place one tbsp of sugar into cup and stir
