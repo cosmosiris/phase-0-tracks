@@ -1,4 +1,4 @@
-def hamster_intake
+
   puts "What's the hamster's name?"
   hamstername = gets.chomp
 
@@ -13,11 +13,11 @@ def hamster_intake
 
   puts "Estimated age?"
   estimatedage = gets.chomp
-  estimatedage = estimatedage.to_i
-    if estimatedage >= 1
-  estimatedage
+    if estimatedage == ''
+      estimatedage = nil
     else
-  estimatedage = nil
+      estimatedage = estimatedage.to_i
     end
 
-end
+p estimatedage
+
