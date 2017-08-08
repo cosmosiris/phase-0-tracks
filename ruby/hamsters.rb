@@ -19,5 +19,5 @@
       estimatedage = estimatedage.to_i
     end
 
-p estimatedage
+puts estimatedage
 
