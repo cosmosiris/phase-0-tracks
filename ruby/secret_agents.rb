@@ -20,11 +20,11 @@ def encrypt(x)
     end
    i += 1
   end
-  puts string
+  string
 end
 
-# encrypt("abc")
-# encrypt("zed")
+puts encrypt("abc")
+puts encrypt("zed")
 
 # Define a method "decrypt" with parameter x
 # setup a loop starting with an i that equals 0
@@ -48,12 +48,12 @@ def decrypt(x)
     string += alphabet[new_var - 1]
     i += 1
   end
-  puts string
+  string
 end
 
-# decrypt("bcd")
-# decrypt("afe")
-# decrypt(encrypt("swordfish"))
+puts decrypt("bcd")
+puts decrypt("afe")
+puts decrypt(encrypt("swordfish"))
 
 # Driver Code
 # Ask a secret agent what they want to do with their password

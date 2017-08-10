@@ -27,16 +27,17 @@ def employee_process
     # Conditional Results
     if allergy == "sunshine"
       puts "Probably a vampire"
-    elsif (2017 - birthyear.to_i === age.to_i) && bread === "yes" || insurance === "yes"
-        if name === "Drake Cula" || name === "Tu Fang"
+    elsif (2017 - birthyear.to_i == age.to_i) && (bread == "yes" || insurance == "yes")
+        if name == "Drake Cula" || name == "Tu Fang"
           puts "Definitely a vampire"
         else
           puts "Probably not a vampire"
         end
-    elsif (2017 - birthyear.to_i != age.to_i) && bread === "no" || insurance === "no"
+
+    elsif (2017 - birthyear.to_i != age.to_i) && (bread == "no" || insurance == "no")
       puts "Probably a vampire"
 
-    elsif (2017 - birthyear.to_i != age.to_i) && bread === "no" && insurance === "no"
+    elsif (2017 - birthyear.to_i != age.to_i) && (bread == "no" && insurance == "no")
       puts "Almost certainly a vampire"
 
     else
