@@ -1,4 +1,5 @@
 def employee_process
+  #opening questions
   def employee_survey
     puts "What is your name?: "
     name = gets.chomp
@@ -15,7 +16,18 @@ def employee_process
     puts "Would you like to enroll in the company's health insurance?: "
     insurance = gets.chomp
 
-    if (2017 - birthyear.to_i === age.to_i) && bread === "yes" || insurance === "yes"
+    #Allergies
+      puts "Please enter your allergies one at a time. Once you've entered them all type the word done"
+      allergy = gets.chomp
+      until allergy == "done" || allergy == "sunshine"
+        puts "Please enter your allergies one at a time. Once you've entered them all type the word done"
+        allergy = gets.chomp
+      end
+
+    # Conditional Results
+    if allergy == "sunshine"
+      puts "Probably a vampire"
+    elsif (2017 - birthyear.to_i === age.to_i) && bread === "yes" || insurance === "yes"
         if name === "Drake Cula" || name === "Tu Fang"
           puts "Definitely a vampire"
         else
@@ -32,6 +44,7 @@ def employee_process
     end
   end
 
+  #execute program
   puts "How many employees do you plan to process?"
   employee_count = gets.chomp
   i = 0
