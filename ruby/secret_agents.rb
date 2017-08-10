@@ -13,7 +13,11 @@ def encrypt(x)
   i = 0
   string = ""
   while i < x.length
-   string += x[i].next
+    if x[i].next == "aa"
+      string += "a"
+    else
+      string += x[i].next
+    end
    i += 1
   end
   puts string
