@@ -23,8 +23,8 @@ def encrypt(x)
   puts string
 end
 
-encrypt("abc")
-encrypt("zed")
+# encrypt("abc")
+# encrypt("zed")
 
 # Define a method "decrypt" with parameter x
 # setup a loop starting with an i that equals 0
@@ -51,6 +51,34 @@ def decrypt(x)
   puts string
 end
 
-decrypt("bcd")
-decrypt("afe")
+# decrypt("bcd")
+# decrypt("afe")
+# decrypt(encrypt("swordfish"))
+
+# Driver Code
+# Ask a secret agent what they want to do with their password
+puts "Hello secret agent, do you want to encrypt or decrypt your password?"
+answer = gets.chomp
+
+#check answer
+if answer == "encrypt" || answer == "decrypt"
+  # Ask for password
+  puts "Alright lets #{answer} your password. What is your password?"
+  password = gets.chomp
+else
+  #repeat question
+  puts "sorry I do not understand your response. Do you want to encrypt or decrypt your password?"
+  answer = gets.chomp
+  puts "Alright lets #{answer} your password. What is your password?"
+  password = gets.chomp
+end
+
+#conduct the requested operation
+if answer == "encrypt"
+  puts "Your encrypted password is:"
+  puts encrypt(password)
+else
+  puts "Your decrypted password is:"
+  puts decrypt(password)
+end
 
