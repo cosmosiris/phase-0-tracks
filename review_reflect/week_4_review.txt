@@ -1,0 +1,47 @@
+Variables
+1. What is a variable? Why might a programmer use a variable?
+  A variable is basically an identifier or "symbolic name" that stores information. Programmers use variables to store information so that they can quickly access that information whenever neccessary by simply referencing the variable.
+
+2. If the value of first_name is "Abraham" and last_name is "Lincoln", explain the order in which Ruby will run the line full_name = first_name + last_name, and what the final result will be.
+  Ruby will run everything to the right of the equal sign first. Whatever the output is will then be assigned to the variable on the left of the equal sign. The final valueof full_name will be "first_name last_name".
+
+Data Types
+3. For each of the following data types, write a short definition and give at least one example of when you might use the data type in a program. (Don't use an example we've already provided.)
+
+string: a string is a sequence of characters wrapped in quotation marks. A string is used to store information for example you would use a string to store the email address of users on a website.
+integer: a whole number, meaning a number that is not a fraction. You use integers when doing mathematical operations or storing numerical data. For example, the birthyear of a user on a website.
+float: a number that is a fraction. You use floats when doing mathematical operations or storing numerical data. For example, you could use it to store sales revenue data.
+nil: indicates that a variable has no value. The variable is empty. It does not even have a value of 0. You would use nil if someone enters information incorrectly.
+boolean: a data type that has only two values, true and false. These values are used to compare data to each other for example, I may use a boolean to compare a user's confirmed login password to the password they enter each time they try to login to a website.
+
+Algorithms
+4. What is an algorithm?
+  An algorithm is a procedure or set of code that tells a computer exactly what steps to follow to reach a particular goal. The algorithm takes a particular input, and then manipulates that input before determining an output.
+5. What are two common categories of algorithm in computer science?
+  Searching and sorting algorithms.
+
+Methods
+6. What is a method? Why might a programmer choose to use a method? A method is a built-in or "pre-made" algorithm or function. Programmers use these to accomplish work easier and faster.
+
+7. Define the following terms as they relate to a method.
+
+return value: the output of the method
+side effect: an untintended consequence of a method that impacts components of a program that are outside the scope of the method
+parameter:a placeholder within a method that is eventually replaced with an argument before a method is executed
+argument: the data that replaces the parameters before a method is executed.
+implicit return: the automatic return of a method's last evaluated statement.
+8. What are global scope and method scope? How do those scopes impact the availability of data at different points in a program?: global scope refers to all variables within a program and method scope refers to only the variables within a program that are defined with a method that is also within that program. If you call on a global variable while inside of a method you will be able to access the variable. However, if you call on a local variable (one inside a method) while outside of the method, you will not be able to access the variable.
+
+Control Flow
+9. What is control flow? Why might a programmer choose to use flow control? Simply the order in which instructions of a program are executed. You want to use control flow to organize your code in a logical order which will allow you to get the outcome you want.
+
+10. Define the following terms as they relate to flow control.
+
+loop: a loop is a set of instructions that are designed to repeat a set number of times
+if: the first line of a conditional statement
+else: the last line of a conditional statement before the "end"
+elsif: a line within a conditional statement that goes between the if and else statements.
+while: a type of loop where the loop is set to repeat while a variable is less than or greater than a certain value
+until: a type of loop where the loop is set to repeat until a variable reaches a certain value
+
+
