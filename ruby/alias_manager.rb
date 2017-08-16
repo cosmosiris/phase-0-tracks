@@ -52,11 +52,10 @@ def alias_manager
     puts "If you would like to try another name, please enter another first and last name. If not, please type 'quit' "
     full_name = gets.chomp
   end
-    puts "Thank, you. have a nice day."
-    puts data_structure
     data_structure.each do |name,new_name|
       puts "#{name} will be known as #{new_name}"
     end
+  puts "Thank, you. have a nice day."
 end
 
 alias_manager
