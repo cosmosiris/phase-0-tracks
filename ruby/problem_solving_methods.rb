@@ -30,4 +30,54 @@
 # p fib(6)
 # p fib(100)
 
-#release 2: sort an array
+#_________release 2: sort an array_______________
+#----------not ruby specific solution----------
+def sorting(array)
+  #set a variable equal to the length of the array
+  n = array.length
+
+  #create main loop and set a variable equal to false. This variable will break the loop once all the swaps have been made
+  loop do
+    swapped = false
+
+    #create a times loop
+    (n-1).times do |i|
+      if array[i] > array[i+1]
+        switch = array[i+1] #store element to be swapped in a temporary variable
+        array[i+1] = array[i]
+        array[i] = switch
+        swapped = true #if a swap happens then break variable becomes true. Either way, the .times loop will happen again until i reaches n-1
+      end
+    end
+
+    #once .times loop ends
+    break if !swapped
+  end
+
+  array
+end
+
+array = [4, 9, 3, 7]
+p sorting(array)
+
+-----------#ruby specific solution ---------------
+def sorting_1(array)
+  n = array.length
+
+  loop do
+    swapped = false
+    (n-1).times do |i|
+      if array[i] > array[i+1]
+        array[i], array[i+1] = array[i+1], array[i]
+        swapped = true
+      end
+    end
+
+    break if not swapped
+  end
+
+  array
+end
+
+array_1 = [7, 4, 2, 6]
+p sorting_1(array_1)
