@@ -17,7 +17,7 @@ zombie_apocalypse_supplies.each do |i|
   if i.include?(item)
     puts "#{item} is on your list"
   else
-    puts i
+    puts "you'll need #{i}"
   end
 end
 
@@ -30,7 +30,7 @@ zombie_apocalypse_supplies.each do |i|
   new_list << i
 end
 new_list = new_list.first(5)
-p new_list
+puts "Sorry we had to remove a few items, here is your new list: #{new_list}"
 
 
 # 4. You found another survivor! This means you can combine your supplies.
@@ -39,10 +39,9 @@ p new_list
 # Find the built-in method that helps you accomplish this in the Ruby
 # documentation for Arrays.
 other_survivor_supplies = [ "warm clothes", "rations", "compass", "camp stove","solar battery", "flashlight"]
-
 final_supply = zombie_apocalypse_supplies + other_survivor_supplies
 
-p final_supply.uniq!
+puts "Here is your final supply list: #{final_supply.uniq!}"
 # ----
 
 # Hash Drills
@@ -72,8 +71,7 @@ extinct_animals.each do |name,date|
     extinct_animals.delete(name)
   end
 end
-
-p extinct_animals
+puts "These animals were extinct before the year 2000: #{extinct_animals}"
 
 
 # 3. Our calculations were completely off, turns out all of those animals went
@@ -84,9 +82,7 @@ extinct_animals.each do |name,date|
   date += 3
   extinct_animals[name] = date
 end
-
-p extinct_animals
-
+puts "Our extinction dates were off. Here are the new dates: #{extinct_animals}"
 
 
 # 4. You've heard that the following animals might be extinct, but you're not sure.
