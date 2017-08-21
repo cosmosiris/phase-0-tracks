@@ -54,15 +54,15 @@ class Student
 end
 
 
-Iris = []
+students = []
 50.times do
-  iris = Student.new
-  Iris.push(iris)
+  student = Student.new
+  students << student
 
-  Iris.each do |method|
-    iris.name("Iris Nevins")
-    iris.school("Dev Bootcamp")
-    iris.major("Software Engineering")
+  students.each do |method|
+    student.name("Iris Nevins")
+    student.school("Dev Bootcamp")
+    student.major("Software Engineering")
   end
 end
-puts Iris
+puts students
