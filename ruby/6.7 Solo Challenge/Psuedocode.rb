@@ -2,12 +2,14 @@
 
 # Define class
 class WordGuess
-  attr_reader :word
+  attr_reader :word, :guess_count
   attr_accessor :guess
 # Initialize and add instance variables
   def initialize
     @word = word
     @guess = guess
+    @guess_count = 0
+    @guess_array =[]
   end
 #method for one user to enter a word
   def set_word(word)
@@ -15,30 +17,41 @@ class WordGuess
   end
 #method for second user to guess the word
 #method to check the guess against the word
+#Check guess and limit guesses to length of the word, except repeat guesses do not count against the user.
   def guess_check(guess)
     @guess = guess
-    if @guess == @word
+    @guess_array << guess
+    @guess_count += 1
+    if @guess.downcase == @word.downcase
       puts "Congratulations, you are so smart"
     else
-      puts "You lose. Go home stupid"
+      puts "Wrong, you have #{word.length - @guess_count} attempts remaining"
+    end
+    @guess_array.uniq!
+    puts @guess_array
   end
-
 end
 
 # Driver Code
+puts "Welcome to the Word Guessing Game"
+game = WordGuess.new
+
 #Enter word
 puts "Hi user number 1. Please enter the word you would like user number 2 to guess"
 word = gets.chomp
-set_word(word)
+game.set_word(word)
 
-#Enter guess
-puts "Hi user number 2. Please guess the word that you think user number two entered"
-guess = gets.chomp
+#Loop
+while game.guess_count < word.length
+  #Enter guess
+  puts "Enter the word you think user number 1 entered"
+  guess = gets.chomp
 
-#Check guess
-guess_check(guess)
+  #Check Guess
+  game.guess_check(guess)
 
-#limit guesses to length of the word, except repeat guesses do not count against the user
+end
+
 
 #guessing player recieives continual feedback on current state of the word
 
