@@ -1,0 +1,18 @@
+1. What are classes? Be sure to define the following terms in your explanation and describe the relationships between them:
+	A class is basically a blueprint for creating objects of a similar kind. For example a Toyota Corolla and a Honda Accord are both objects of a similar kind. In ruby we would say they are a part of the class called “car”. Each object that is created from a class has things it can do and things it knows about itself. The things it knows about itself (also called attributes or states) are based on instance variables. So, taking the car example, an instance variable for the car class might be color. But the value of the color variable may be different for each object(car)—one might be blue and the other black. The things an object can do are called instance methods. An instance method is a function that takes some input and determines an object’s behavior by producing some output.
+
+2. What are attributes?
+	The characteristics(aka state) of an object within a class. They are determined by instance variables. 
+
+3. Give an example of a real world object, and describe how you might assign its attributes if you were to design a class to represent that object.
+	Taking the car example again, The class is car. The instance variables might be color, age, make, model, etc. 
+
+
+4. What is the purpose of the initialize method? When does it run?
+	An initialize method runs whenever a new instance of a class is created. It is the first method to run and it basically creates the instance variables of a class. It can also be used to determine the default characteristics of every object within a class. 
+
+5. What are modules? Modules are similar to classes except they have constant variables and they provide methods that can be used across multiple classes. 
+
+6. What are the different ways you can use a module?
+
+	A module can be used either inside of a class or between multiple classes (mix-in method). 
