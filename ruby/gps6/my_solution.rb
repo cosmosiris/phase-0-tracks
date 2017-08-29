@@ -94,3 +94,17 @@ end
 
 #=======================================================================
 # Reflection Section
+# What are the differences between the two different hash syntaxes shown in the state_data file?
+  # One hash syntax uses a symbol the other uses a string and an arrow =>
+
+# What does require_relative do? How is it different from require?
+  #it links a relative or related file so that we can separate the code into two different files. Require is used to link to libraries and other pre-existing open-source code
+
+# What are some ways to iterate through a hash?
+  #You can iterate using the .each method or a while loop.
+
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+  #nothing really except that sometimes the names could be easily mixed up.
+
+# What concept did you most solidify in this challenge?
+  #I solidified the concept of refactoring code to make it dry. It is clear now that inside of a class you do not need to pass instance variables to methods because the instance variables are accessibly by all methods inside the class.
