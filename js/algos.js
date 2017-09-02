@@ -26,13 +26,17 @@ var longest_phrase = function(array){
 
 var key_value_match = function(hash_1, hash_2){
   //see if a hash 1 key matches with a hash_2 value
-  var match = false;
-  for (var i in hash_1){
-    if (hash_1[i] == hash_2[i]){
-      match = true;
-    }
-    console.log(match)
-  }
+  // var match = false;
+  // for (var i in hash_1){
+  //   if (hash_1[i] == hash_2[i]){
+  //     match = true;
+  //   }
+  //   console.log(match)
+  // }
+  hash_1_keys = Object.keys(hash_1)
+  hash_1_values = Object.getOwnPropertyNames(hash_1)
+  console.log(hash_1_keys)
+  console.log(hash_1_values)
 }
 
 
@@ -41,6 +45,6 @@ var key_value_match = function(hash_1, hash_2){
 longest_phrase(["Iris", "Kathleen", "Nevins", "Harold", "Andrea", "Dean"]);
 
 key_value_match({name: "Stephen", age: 54}, {name: "Tamir", age: 50}); //false, false
-key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 8}); //true, false
-key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false, false
-key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
+// key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 8}); //true, false
+// key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false, false
+// key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
