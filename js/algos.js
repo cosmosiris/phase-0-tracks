@@ -25,18 +25,27 @@ var longest_phrase = function(array){
 //write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 
 var key_value_match = function(hash_1, hash_2){
-  //see if a hash 1 key matches with a hash_2 value
-  // var match = false;
-  // for (var i in hash_1){
-  //   if (hash_1[i] == hash_2[i]){
-  //     match = true;
-  //   }
-  //   console.log(match)
-  // }
-  hash_1_keys = Object.keys(hash_1)
-  hash_1_values = Object.getOwnPropertyNames(hash_1)
-  console.log(hash_1_keys)
-  console.log(hash_1_values)
+  //turn hash_1 into an array
+  var keys_1 = Object.keys(hash_1);
+  var array_1 = [];
+  for(var i = 0; i < keys_1.length; i++){
+    var key = keys_1[i];
+    var value = hash_1[key];
+    array_1.push(key + ":" + value);
+  }
+  console.log(array_1);
+
+  //turn hash_2 into an array
+  var keys_2 = Object.keys(hash_2);
+  var array_2 = [];
+  for(var i = 0; i < keys_2.length; i++){
+    var key = keys_2[i];
+    var value = hash_2[key];
+    array_2.push(key + ":" + value);
+  }
+  console.log(array_2);
+
+
 }
 
 
