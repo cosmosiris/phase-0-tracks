@@ -27,7 +27,7 @@ var longest_phrase = function(array){
 var key_value_match =  function(hash_1, hash_2){
   //see if a hash 1 key matches with a hash_2 value
   for (var i in hash_1){
-    console.log(i);
+    console.log(i + " : " + hash_1[i]);
   }
 }
 
