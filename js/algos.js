@@ -7,7 +7,7 @@ var longest_phrase = function(array){
   var sorted = false
   while(sorted == false){
     sorted = true;
-    //^^makes sure that the while loop above does not stop until the for loop below makes an entire iteration without changing the value of sorted to false. Once an entire iteration happens without changing the value of sorted to false, we know that the array has been sorted
+    //^^makes sure that the while loop above does not stop until the for loop below makes an entire iteration without changing the value of sorted to false. Once an entire iteration happens without changing the value of sorted to false, we know that the array has been sorted. Sorted remains true and the function can return its output.
     for(var i = 0; i < array.length-1; i++){
       if (array[i].length > array[i+1].length){
         var phrase_to_switch = array[i];
@@ -25,9 +25,10 @@ var longest_phrase = function(array){
 //write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 
 var key_value_match =  function(hash_1, hash_2){
-
-
-
+  //see if a hash 1 key matches with a hash_2 value
+  for (var i in hash_1){
+    console.log(i);
+  }
 }
 
 
@@ -37,7 +38,7 @@ var key_value_match =  function(hash_1, hash_2){
 // DRIVER CODE
 longest_phrase(["Iris", "Kathleen", "Nevins", "Harold", "Andrea", "Dean"]);
 
-key_value_match({name: "Steven", age: 54}, {name: "Tamir", age: 54}); //true
-key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //true
-key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false
-key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 8}); //false
+key_value_match({name: "Steven", age: 54}, {name: "Tamir", age: 33}); //true
+// key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //true
+// key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false
+// key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 8}); //false
