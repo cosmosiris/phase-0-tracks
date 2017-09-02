@@ -1,5 +1,5 @@
 //7.3 Solo Challenge: Javascript Algorithms
-// Release 0: Find the Longest Phrase
+// RELEASE 0: FINDING THE LONGEST PHRASE
 // write function that takes an array of strings and returns the longest phrase.
 
 var longest_phrase = function(array){
@@ -21,4 +21,23 @@ var longest_phrase = function(array){
   return (array[array.length-1])
 }
 
+//RELEASE 1: FIND A KEY-VALUE MATCH
+//write a function that takes two objects and checks to see if the objects share at least one key-value pair.
+
+var key_value_match =  function(hash_1, hash_2){
+
+
+
+}
+
+
+
+
+
+// DRIVER CODE
 longest_phrase(["Iris", "Kathleen", "Nevins", "Harold", "Andrea", "Dean"]);
+
+key_value_match({name: "Steven", age: 54}, {name: "Tamir", age: 54}); //true
+key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //true
+key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false
+key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 8}); //false
