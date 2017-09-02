@@ -24,10 +24,14 @@ var longest_phrase = function(array){
 //RELEASE 1: FIND A KEY-VALUE MATCH
 //write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 
-var key_value_match =  function(hash_1, hash_2){
+var key_value_match = function(hash_1, hash_2){
   //see if a hash 1 key matches with a hash_2 value
+  var match = false;
   for (var i in hash_1){
-    console.log(i + " : " + hash_1[i]);
+    if (hash_1[i] == hash_2[i]){
+      match = true;
+    }
+    console.log(match)
   }
 }
 
@@ -38,7 +42,7 @@ var key_value_match =  function(hash_1, hash_2){
 // DRIVER CODE
 longest_phrase(["Iris", "Kathleen", "Nevins", "Harold", "Andrea", "Dean"]);
 
-key_value_match({name: "Steven", age: 54}, {name: "Tamir", age: 33}); //true
+key_value_match({name: "Stephen", age: 54}, {name: "Tamir", age: 54}); //true
 // key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //true
 // key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false
 // key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 8}); //false
