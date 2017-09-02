@@ -37,12 +37,10 @@ var key_value_match = function(hash_1, hash_2){
 
 
 
-
-
 // DRIVER CODE
 longest_phrase(["Iris", "Kathleen", "Nevins", "Harold", "Andrea", "Dean"]);
 
-key_value_match({name: "Stephen", age: 54}, {name: "Tamir", age: 54}); //true
-// key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3}); //true
-// key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false
-// key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 8}); //false
+key_value_match({name: "Stephen", age: 54}, {name: "Tamir", age: 50}); //false, false
+key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 8}); //true, false
+key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false, false
+key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
