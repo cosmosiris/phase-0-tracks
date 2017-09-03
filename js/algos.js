@@ -58,16 +58,30 @@ var key_value_match = function(hash_1, hash_2){
 //RELEASE 2: GENERATE RANDOM TEST DATA
 // Write a function that takes an integer for length, and builds and returns an array of strings of the given length. So if we ran your function with an argument of 3, we would get an array of 3 random words back The words should be of randomly varying length, with a minimum of 1 letter and a maximum of 10 letters. Add driver code that does the following 10 times: generates an array, prints the array, feeds the array to your "longest word" function, and prints the result.
 
-//create function
-random_array_of_strings = function(){
+random_array_of_strings = function(number){
+//create empty array that will become the final output
+  var random_array_of_strings = [];
 //make array of the alphabet
-  var alphabet_string = "abcdefghijklmnopqrstuvwzyx"
+  var alphabet_string = "abcdefghijklmnopqrstuvwzyx";
   var alphabet_array = alphabet_string.split("");
-//create a variable for a random number.
-  var random_number = Math.ceil(Math.random() * 10);
-  console.log(random_number);
-// from the alphabet array to create a string. Push that string into the random_array_of_strings
 
+//make random array loop
+  for(n = 0; n < number; n++){
+  //create a variable for a random number that will be used to determine the length of each word that goes inside the final array.
+    var random_number = Math.floor((Math.random() * 10) +1);
+    console.log(random_number);
+  //create word variable that takes each random letter
+    var word = ""
+  // use the random number method to select an index from the alphabet array and push that to a string.
+    for(i = 0; i < random_number; i++){
+      var letter = alphabet_array[Math.floor(Math.random() * 27)];
+      word = word + letter;
+      console.log(word);
+    }
+  //Push that word into the random_array_of_strings
+      random_array_of_strings.push(word);
+      console.log(random_array_of_strings);
+  }
 //Do the above operation x times depending on the parameter set in the driver code
 }
 
@@ -83,6 +97,6 @@ key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 8}); //true, fal
 key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false, false
 key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
 
-random_array_of_strings();
+random_array_of_strings(2);
 // random_array_of_strings(2);
 // random_array_of_strings(3);
