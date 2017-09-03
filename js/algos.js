@@ -93,5 +93,5 @@ key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false,
 key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
 
 random_array_of_strings(2);
-// random_array_of_strings(2);
-// random_array_of_strings(3);
+random_array_of_strings(4);
+random_array_of_strings(6);
