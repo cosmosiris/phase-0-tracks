@@ -45,15 +45,44 @@ var key_value_match = function(hash_1, hash_2){
   }
   console.log(array_2);
 
-
+  //compare array_1 and array_2
+  for(var j = 0; j < array_1.length; j++){
+    var match = false;
+    if (array_1[j] == array_2[j]){
+      match = true;
+    }
+    console.log(match);
+  }
 }
+
+//RELEASE 2: GENERATE RANDOM TEST DATA
+// Write a function that takes an integer for length, and builds and returns an array of strings of the given length. So if we ran your function with an argument of 3, we would get an array of 3 random words back The words should be of randomly varying length, with a minimum of 1 letter and a maximum of 10 letters. Add driver code that does the following 10 times: generates an array, prints the array, feeds the array to your "longest word" function, and prints the result.
+
+//create function
+random_array_of_strings = function(){
+//make array of the alphabet
+  var alphabet_string = "abcdefghijklmnopqrstuvwzyx"
+  var alphabet_array = alphabet_string.split("");
+//create a variable for a random number.
+  var random_number = Math.ceil(Math.random() * 10);
+  console.log(random_number);
+// from the alphabet array to create a string. Push that string into the random_array_of_strings
+
+//Do the above operation x times depending on the parameter set in the driver code
+}
+
+
 
 
 
 // DRIVER CODE
 longest_phrase(["Iris", "Kathleen", "Nevins", "Harold", "Andrea", "Dean"]);
 
-key_value_match({name: "Stephen", age: 54}, {name: "Tamir", age: 50}); //false, false
-// key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 8}); //true, false
-// key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false, false
-// key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
+key_value_match({name: "Stephen", age: 54}, {name: "Tamir", age: 54}); //false, true
+key_value_match({animal: "Dog", legs: 4}, {animal: "Dog", legs: 8}); //true, false
+key_value_match({name: "Steven", age: 54}, {name: "Shannon", age: 31}); //false, false
+key_value_match({animal: "Dog", legs: 4}, {animal: "Spider", legs: 4}); //false, true
+
+random_array_of_strings();
+// random_array_of_strings(2);
+// random_array_of_strings(3);
