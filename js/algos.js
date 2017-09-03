@@ -67,25 +67,20 @@ random_array_of_strings = function(number){
 
 //make random array loop
   for(n = 0; n < number; n++){
-  //create a variable for a random number that will be used to determine the length of each word that goes inside the final array.
+  //create a variable for a random number between 1 and 10 that will be used to determine the length of each word that goes inside the final array.
     var random_number = Math.floor((Math.random() * 10) +1);
-    console.log(random_number);
-  //create word variable that takes each random letter
+  //create word variable that will take each random letter
     var word = ""
-  // use the random number method to select an index from the alphabet array and push that to a string.
+  // Second loop: using the random_number variable as the counter--select a random index from the alphabet array and push that to the word variable.
     for(i = 0; i < random_number; i++){
       var letter = alphabet_array[Math.floor(Math.random() * 27)];
       word = word + letter;
-      console.log(word);
     }
-  //Push that word into the random_array_of_strings
+  //Push the word variable into the random_array_of_strings
       random_array_of_strings.push(word);
-      console.log(random_array_of_strings);
   }
-//Do the above operation x times depending on the parameter set in the driver code
+  console.log(random_array_of_strings);
 }
-
-
 
 
 
