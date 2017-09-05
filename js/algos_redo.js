@@ -75,6 +75,15 @@ console.log(random_array_of_strings(2));
 console.log(random_array_of_strings(4));
 console.log(random_array_of_strings(6));
 
+//COMPLEX DRIVER CODE COMBINING RANDOM_ARRAY_OF_STRINGS AND LONGEST_PHRASE
+for (x = 0; x <= 10; x++){
+  var phrase = random_array_of_strings(Math.floor((Math.random() * 10) + 1))
+  console.log(phrase);
+  console.log(longest_phrase(phrase));
+}
+
+
+
 
 
 
