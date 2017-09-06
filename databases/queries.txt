@@ -1,0 +1,112 @@
+--------Display the information in one table (either table is fine).------
+
+SELECT * FROM members;
+1|Jillian Pim|jillianpim@gmail.com|true|3
+2|Rhonda Felder|rh@gmail.com|true|2
+3|Umi Selah|umi@gmail.com|true|1
+4|Rachel Gilmer|rachel_gilmer@gmail.com|true|1
+5|Jasmen Rogers|jr@gmail.com|true|2
+6|Nathan Pim|np@gmail.com|true|3
+
+SELECT * FROM organizations;
+1|Dream Defenders|umi@dreamdefenders.org|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida|Umi Selah|true
+2|The Alliance|blmalliancebroward@gmail.com|Our aim is to abolish systemic racism in Broward County|Rhonda Felder|true
+3|Food Not Bombs Fort Lauderdale|fnb@gmail.com|Our aim is to advocate for the homeless citizens of Broward|Jillian Pim|true
+
+
+------Update an item that meets some condition (you can choose a condition that makes sense).------
+
+UPDATE members SET active_member = "false" WHERE name="Jasmen Rogers";
+SELECT * FROM members;
+1|Jillian Pim|jillianpim@gmail.com|true|3
+2|Rhonda Felder|rh@gmail.com|true|2
+3|Umi Selah|umi@gmail.com|true|1
+4|Rachel Gilmer|rachel_gilmer@gmail.com|true|1
+5|Jasmen Rogers|jr@gmail.com|false|2
+6|Nathan Pim|np@gmail.com|true|3
+
+----------Display the information in both tables using one query----------
+
+SELECT * FROM members, organizations WHERE members.organization_id = organizations.id;
+1|Jillian Pim|jillianpim@gmail.com|true|3|3|Food Not Bombs Fort Lauderdale|fnb@gmail.com|Our aim is to advocate for the homeless citizens of Broward|Jillian Pim|true
+2|Rhonda Felder|rh@gmail.com|true|2|2|The Alliance|blmalliancebroward@gmail.com|Our aim is to abolish systemic racism in Broward County|Rhonda Felder|true
+3|Umi Selah|umi@gmail.com|true|1|1|Dream Defenders|umi@dreamdefenders.org|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida|Umi Selah|true
+4|Rachel Gilmer|rachel_gilmer@gmail.com|true|1|1|Dream Defenders|umi@dreamdefenders.org|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida|Umi Selah|true
+5|Jasmen Rogers|jr@gmail.com|true|2|2|The Alliance|blmalliancebroward@gmail.com|Our aim is to abolish systemic racism in Broward County|Rhonda Felder|true
+6|Nathan Pim|np@gmail.com|true|3|3|Food Not Bombs Fort Lauderdale|fnb@gmail.com|Our aim is to advocate for the homeless citizens of Broward|Jillian Pim|true
+
+SELECT * FROM organizations, members WHERE members.organization_id = organizations.id;
+3|Food Not Bombs Fort Lauderdale|fnb@gmail.com|Our aim is to advocate for the homeless citizens of Broward|Jillian Pim|true|1|Jillian Pim|jillianpim@gmail.com|true|3
+2|The Alliance|blmalliancebroward@gmail.com|Our aim is to abolish systemic racism in Broward County|Rhonda Felder|true|2|Rhonda Felder|rh@gmail.com|true|2
+1|Dream Defenders|umi@dreamdefenders.org|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida|Umi Selah|true|3|Umi Selah|umi@gmail.com|true|1
+1|Dream Defenders|umi@dreamdefenders.org|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida|Umi Selah|true|4|Rachel Gilmer|rachel_gilmer@gmail.com|true|1
+2|The Alliance|blmalliancebroward@gmail.com|Our aim is to abolish systemic racism in Broward County|Rhonda Felder|true|5|Jasmen Rogers|jr@gmail.com|true|2
+3|Food Not Bombs Fort Lauderdale|fnb@gmail.com|Our aim is to advocate for the homeless citizens of Broward|Jillian Pim|true|6|Nathan Pim|np@gmail.com|true|3
+
+--------Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.-----------
+
+SELECT members.name, organizations.name FROM members JOIN organizations ON members.organization_id = organizations.id;
+Jillian Pim|Food Not Bombs Fort Lauderdale
+Rhonda Felder|The Alliance
+Umi Selah|Dream Defenders
+Rachel Gilmer|Dream Defenders
+Jasmen Rogers|The Alliance
+Nathan Pim|Food Not Bombs Fort Lauderdale
+
+-------Delete an item that meets some condition (you can choose a condition that makes sense).---------
+
+DELETE FROM members WHERE name = "Jillian Pim";
+SELECT * FROM members;
+2|Rhonda Felder|rh@gmail.com|true|2
+3|Umi Selah|umi@gmail.com|true|1
+4|Rachel Gilmer|rachel_gilmer@gmail.com|true|1
+5|Jasmen Rogers|jr@gmail.com|false|2
+6|Nathan Pim|np@gmail.com|true|3
+
+
+
+----Additional Queries----
+----Display specific information from one table-----
+SELECT name, organization_id FROM members;
+Jillian Pim|3
+Rhonda Felder|2
+Umi Selah|1
+Rachel Gilmer|1
+Jasmen Rogers|2
+Nathan Pim|3
+
+SELECT name, mission_statement FROM organizations;
+Dream Defenders|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida
+The Alliance|Our aim is to abolish systemic racism in Broward County
+Food Not Bombs Fort Lauderdale|Our aim is to advocate for the homeless citizens of Broward
+
+------ADDITIONAL JOINS--------
+---FULL JOIN---
+SELECT members.name, organizations.name, organizations.mission_statement FROM members JOIN organizations ON members.organization_id = organizations.id;
+Rhonda Felder|The Alliance|Our aim is to abolish systemic racism in Broward County
+Umi Selah|Dream Defenders|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida
+Rachel Gilmer|Dream Defenders|Our aim is to build a powerful, deep, local, organization and movement for freedom and liberation in Florida
+Jasmen Rogers|The Alliance|Our aim is to abolish systemic racism in Broward County
+Nathan Pim|Food Not Bombs Fort Lauderdale|Our aim is to advocate for the homeless citizens of Broward
+
+
+
+---INNER JOIN----Returns records that have matching values in both tables
+
+SELECT name FROM members INNER JOIN organizations ON members.name = organizations.name;
+Error: ambiguous column name: name
+
+
+
+---LEFT JOIN----Return all records from the left table, and the matched records from the right table
+
+SELECT name FROM members LEFT JOIN organizations ON members.name = organizations.name;
+Error: ambiguous column name: name
+
+
+
+----FULL JOIN----Return all records when there is a match in either left or right table
+
+SELECT name FROM members FULL JOIN organizations ON members.name = organizations.name;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+
