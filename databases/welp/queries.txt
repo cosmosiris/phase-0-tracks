@@ -1,21 +1,99 @@
- SELECT * FROM users, reviews WHERE reviews.user_id = users.id;
+Queries from the assignment are at the bottom of the file under the title "three joins"
+
+-----SEE ALL FIELDS OF A TABLE-------
+.schema business
+CREATE TABLE business(
+id INTEGER PRIMARY KEY,
+name VARCHAR(255)
+);
+
+SELECT * FROM business;
+1|Grundy Hollow Wedding Chapel
+2|Amir's Towing
+3|The Beagle Nightclub
+
+.schema users
+CREATE TABLE users(
+id INTEGER PRIMARY KEY,
+first_name VARCHAR(255),
+last_name VARCHAR(255)
+);
+
+SELECT * FROM users;
+1|Bradford|Pitt
+2|Mandy|Kailing
+3|Angela|Jolie
+4|Steven|Wonder
+5|Holly|Berry
+6|Denzel|George
+
+
+.schema reviews
+CREATE TABLE reviews(
+id INTEGER PRIMARY KEY,
+stars INT,
+comment VARCHCAR(255),
+user_id INT,
+business_id INT,
+FOREIGN KEY (user_id) REFERENCES users(id),
+FOREIGN KEY (business_id) REFERENCES business(id)
+);
+
+SELECT * FROM reviews;
+1|5|great food!|1|2
+2|2|terrible service|1|3
+3|4|it was alright|3|3
+4|3|nice|4|3
+5|5|Excellent|5|2
+6|1|Worst experience ever|6|1
+
+-----TWO JOINS----
+SELECT * FROM users JOIN reviews ON users.id = reviews.user_id;
 1|Bradford|Pitt|1|5|great food!|1|2
 1|Bradford|Pitt|2|2|terrible service|1|3
 3|Angela|Jolie|3|4|it was alright|3|3
+4|Steven|Wonder|4|3|nice|4|3
+5|Holly|Berry|5|5|Excellent|5|2
+6|Denzel|George|6|1|Worst experience ever|6|1
 
-SELECT * FROM business, reviews WHERE reviews.business_id = business.id;
+SELECT * FROM business JOIN reviews ON business.id = reviews.business_id;
 2|Amir's Towing|1|5|great food!|1|2
 3|The Beagle Nightclub|2|2|terrible service|1|3
 3|The Beagle Nightclub|3|4|it was alright|3|3
+3|The Beagle Nightclub|4|3|nice|4|3
+2|Amir's Towing|5|5|Excellent|5|2
+1|Grundy Hollow Wedding Chapel|6|1|Worst experience ever|6|1
 
-ELECT * FROM users, business, reviews WHERE reviews.user_id = reviews.business_id;
-1|Bradford|Pitt|1|Grundy Hollow Wedding Chapel|3|4|it was alright|3|3
-1|Bradford|Pitt|2|Amir's Towing|3|4|it was alright|3|3
-1|Bradford|Pitt|3|The Beagle Nightclub|3|4|it was alright|3|3
-2|Mandy|Kailing|1|Grundy Hollow Wedding Chapel|3|4|it was alright|3|3
-2|Mandy|Kailing|2|Amir's Towing|3|4|it was alright|3|3
-2|Mandy|Kailing|3|The Beagle Nightclub|3|4|it was alright|3|3
-3|Angela|Jolie|1|Grundy Hollow Wedding Chapel|3|4|it was alright|3|3
-3|Angela|Jolie|2|Amir's Towing|3|4|it was alright|3|3
-3|Angela|Jolie|3|The Beagle Nightclub|3|4|it was alright|3|3
-sqlite>
+SELECT name, stars FROM business JOIN reviews ON business.id = reviews.business_id;
+Amir's Towing|5
+The Beagle Nightclub|2
+The Beagle Nightclub|4
+The Beagle Nightclub|3
+Amir's Towing|5
+Grundy Hollow Wedding Chapel|1
+
+3 JOINS
+SELECT * FROM users INNER JOIN reviews ON users.id = reviews.user_id INNER JOIN business ON business.id = reviews.business_id;
+1|Bradford|Pitt|1|5|great food!|1|2|2|Amir's Towing
+1|Bradford|Pitt|2|2|terrible service|1|3|3|The Beagle Nightclub
+3|Angela|Jolie|3|4|it was alright|3|3|3|The Beagle Nightclub
+4|Steven|Wonder|4|3|nice|4|3|3|The Beagle Nightclub
+5|Holly|Berry|5|5|Excellent|5|2|2|Amir's Towing
+6|Denzel|George|6|1|Worst experience ever|6|1|1|Grundy Hollow Wedding Chapel
+
+SELECT first_name, last_name, name, stars, comment
+FROM users
+INNER JOIN reviews ON users.id = reviews.user_id
+INNER JOIN business ON business.id = reviews.business_id;
+
+Bradford|Pitt|Amir's Towing|5|great food!
+Bradford|Pitt|The Beagle Nightclub|2|terrible service
+Angela|Jolie|The Beagle Nightclub|4|it was alright
+Steven|Wonder|The Beagle Nightclub|3|nice
+Holly|Berry|Amir's Towing|5|Excellent
+Denzel|George|Grundy Hollow Wedding Chapel|1|Worst experience ever
+
+SELECT first_name, last_name, name, stars, comment FROM users INNER JOIN reviews ON users.id = reviews.user_id INNER JOIN business ON business.id = reviews.business_id WHERE name = "The Beagle Nightclub";
+Bradford|Pitt|The Beagle Nightclub|2|terrible service
+Angela|Jolie|The Beagle Nightclub|4|it was alright
+Steven|Wonder|The Beagle Nightclub|3|nice
