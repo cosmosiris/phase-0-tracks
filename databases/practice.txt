@@ -1,0 +1,32 @@
+CREATE TABLE customers(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  full_name VARCHAR(255),
+  email VARCHAR(255)
+);
+
+CREATE TABLE orders(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  order_date DATE,
+  amount DECIMAL(8,2),
+  customer_id INT,
+  FOREIGN KEY(customer_id) REFERENCES customers(id)
+);
+
+INSERT INTO customers (full_name, email)
+VALUES ("Iris Nevins", "ikn02010@gmail.com"),
+       ("Rhonda Felder", "rh@gmail.com"),
+       ("Omar Desire", "o.k.desire@gmail.com"),
+       ("Andrea Nevins", "aes@gmail.com");
+
+INSERT INTO orders (order_date, amount, customer_id)
+VALUES ('2017/9/17', 58.40, 1),
+       ('2017/6/26', 20.40, 2),
+       ('2017/7/14', 10.99, 3),
+       ('2017/7/26', 41.53, 4);
+
+SELECT * FROM orders WHERE customer_id=1;
+SELECT * FROM customers WHERE full_name="Iris Nevins";
+SELECT * FROM orders WHERE
+   ...> (SELECT id FROM customers
+   ...> WHERE full_name="Iris Nevins"
+   ...> );
