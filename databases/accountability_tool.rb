@@ -9,123 +9,118 @@ db = SQLite3::Database.new("project_planning.db")
 
 # learn about fancy string delimiters
 create_project_table = <<-SQL
-  CREATE TABLE projects(
+  CREATE TABLE IF NOT EXISTS projects(
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
     start_date DATE,
     end_date DATE
-    organizers_id INT,
-    FOREIGN KEY (organizers_id) REFERENCES organizers(id)
-    role_id INT,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
-    task_id INT,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
-    )
-SQL
-
-create_organizers_table = <<-SQL
-  CREATE TABLE organizers(
-    id INTEGER PRIMARY KEY,
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id,
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id),
-    )
+  )
 SQL
 
 create_persons_table = <<-SQL
-  CREATE TABLE persons(
+  CREATE TABLE IF NOT EXISTS persons(
     id INTEGER PRIMARY KEY,
-    name VARCHAR(255),
-    email VARCHAR(255),
-    project_id INT,
-    FOREIGN KEY (project_id) REFERENCES projects(id)
-    role_id INT,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
-    task_id INT,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
-    task_id INT,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
-    task_id INT,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
-    feedback_id INT,
-    FOREIGN KEY (feedback_id) REFERENCES feedback(id)
-    )
-SQL
-
-create_roles_table = <<-SQL
-  CREATE TABLE roles(
-    id INTEGER PRIMARY KEY,
-    title VARCHAR(255),
-    responsibilities VARCHAR(255),
-    project_id INT,
-    FOREIGN KEY (project_id) REFERENCES projects(id)
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id)
-    )
+    full_name VARCHAR(255),
+    email VARCHAR(255)
+  )
 SQL
 
 create_tasks_table = <<-SQL
-  CREATE TABLE tasks(
+  CREATE TABLE IF NOT EXISTS tasks(
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
-    step_1 VARCHAR(255),
+    step_1 TEXT,
     step_1_status VARCHAR(255),
-    step_2 VARCHAR(255),
+    step_2 TEXT,
     step_2_status VARCHAR(255),
-    step_3 VARCHAR(255),
+    step_3 TEXT,
     step_3_status VARCHAR(255),
-    step_4 VARCHAR(255),
+    step_4 TEXT,
     step_4_status VARCHAR(255),
     project_id INT,
+    assigned_to INT,
+    FOREIGN KEY (project_id) REFERENCES projects(id),
+    FOREIGN KEY (assigned_to) REFERENCES persons(id)
+  )
+SQL
+
+create_teams_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS teams(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    organizer_1 INT,
+    organizer_2 INT,
+    organizer_3 INT,
+    project_id INT,
+    FOREIGN KEY (organizer_1) REFERENCES persons(id),
+    FOREIGN KEY (organizer_2) REFERENCES persons(id),
+    FOREIGN KEY (organizer_3) REFERENCES persons(id),
     FOREIGN KEY (project_id) REFERENCES projects(id)
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id)
-    )
+  )
 SQL
 
 create_feedback_table = <<-SQL
-  CREATE TABLE feedback(
+  CREATE TABLE IF NOT EXISTS feedback(
     id INTEGER PRIMARY KEY,
-    fr: VARCHAR(255),
-    to: VARCHAR(255),
-    person_id INT,
-    FOREIGN KEY (person_id) REFERENCES persons(id)
+    timeliness TEXT,
+    communication TEXT,
+    follow_through TEXT,
+    CEC TEXT,
+    effort TEXT,
+    written_from VARCHAR(255),
+    given_to INT,
     project_id INT,
-    FOREIGN KEY (project_id) REFERENCES projects(id)
-    timeliness VARCHAR(255),
-    communication VARCHAR(255),
-    follow-through VARCHAR(255),
-    CEC VARCHAR(255),
-    effort VARCHAR(255),
-    )
+    FOREIGN KEY(given_to) REFERENCES projects(id)
+    FOREIGN KEY(project_id) REFERENCES projects(id)
+  )
 SQL
 
-# create a project table
+# create tables
 db.execute(create_project_table)
-db.execute(create_organizers_table)
 db.execute(create_persons_table)
-db.execute(create_roles_table)
 db.execute(create_tasks_table)
+db.execute(create_teams_table)
 db.execute(create_feedback_table)
 
-# add a test project
+# insert data
+db.execute('INSERT INTO projects
+    (title, start_date, end_date)
+    VALUES
+    ("Launch Website", "2017-01-01", "2017-06-01"),
+    ("May Day Protest", "2017-01-01", "2017-05-01"),
+    ("End of Year Retreat", "2016-01-01", "2017-12-16")')
+
+db.execute('INSERT INTO persons
+    (full_name, email)
+    VALUES
+    ("Iris Nevins", "ikn02010@gmail.com"),
+    ("Rhonda Felder", "rh@gmail.com"),
+    ("Bertisha Jones", "bertisha@gmail.com"),
+    ("Jasmen Rogers", "jasmen@gmail.com"),
+    ("Bob Bender", "bobbender@gmail.com"),
+    ("Patty Bender", "pattybender@gmail.com"),
+    ("Lilian Archer", "lilian@gmail.com")')
+
+db.execute('INSERT INTO tasks
+    (title, step_1, step_1_status, step_2, step_2_status, step_3, step_3_status, step_4, step_4_status, project_id, assigned_to)
+    VALUES
+    ("outline_website", "determine key sections", "complete", "research best layout designs", "in progress", "choose color theme", "not started", "submit outline for review", "not started", 1, 7),
+    ("social-media campaign", "assemble team", "complete", "determine theme", "in progress", "layout series of posts", "not started", "release posts", "not started", 2, 2),
+    ("Book Location", "determine 3-5 options and their prices", "complete", "organize a vote on the final location", "complete", "book reservation", "not started", "confirm reservation", "not started", 3, 3)')
+
+db.execute('INSERT INTO teams
+    (name, organizer_1, organizer_2, organizer_3, project_id)
+    VALUES
+    ("Website team", 1, 7, 5, 1),
+    ("protest team", 2, 4, 6, 2),
+    ("retreat team", 2, 1, 3, 3)')
+
+db.execute('INSERT INTO feedback
+    (timeliness, communication, follow_through, CEC, effort, written_from, given_to, project_id)
+    VALUES
+    ("Always on-time", "honest and straight-forward communication", "impeccable follow-through", "does not always engage conflict the best way. Sometimes allows emotions to make her angry", "puts best foot forward", "Rhonda", 1, 3),
+    ("Usually late", "honest and straight-forward communication", "does not always give a heads up if she cannot follow through on a committment", "engages conflicts well", "medium effort", "Patty", 4, 2),
+    ("always on time or lets us know if she will be late", "sometimes shy or hesitant to speak-up", "always follows through", "does not really engage conflict", "incredible effort", "Iris", 7, 1)')
 
 # explore ORM by retrieving database
 
