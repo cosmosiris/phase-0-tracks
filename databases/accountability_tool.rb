@@ -10,58 +10,68 @@ db = SQLite3::Database.new("project_planning.db")
 # learn about fancy string delimiters
 create_project_table = <<-SQL
   CREATE TABLE IF NOT EXISTS projects(
-    id INTEGER PRIMARY KEY,
-    title VARCHAR(255),
-    start_date DATE,
-    end_date DATE
+    id INTEGER AUTO INCREMENT PRIMARY KEY,
+    project_title VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL
   )
 SQL
 
 create_persons_table = <<-SQL
   CREATE TABLE IF NOT EXISTS persons(
-    id INTEGER PRIMARY KEY,
-    full_name VARCHAR(255),
+    id INTEGER AUTO INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
     email VARCHAR(255)
+  )
+SQL
+
+create_steps_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS steps(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    description TEXT NOT NULL,
+    status VARCHAR(255) NOT NULL,
+  )
+SQL
+
+create_project_steps_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS project_steps(
+    project_id INT NOT NULL,
+    task_id INT NOT NULL,
+    step_id INT NOT NULL
+    FOREIGN KEY(project_id) REFERENCES projects(id),
+    FOREIGN KEY(task_id) REFERENCES tasks(id),
+    FOREIGN KEY(step_id) REFERENCES steps(id),
+    PRIMARY KEY (project_id, task_id)
   )
 SQL
 
 create_tasks_table = <<-SQL
   CREATE TABLE IF NOT EXISTS tasks(
-    id INTEGER PRIMARY KEY,
-    title VARCHAR(255),
-    step_1 TEXT,
-    step_1_status VARCHAR(255),
-    step_2 TEXT,
-    step_2_status VARCHAR(255),
-    step_3 TEXT,
-    step_3_status VARCHAR(255),
-    step_4 TEXT,
-    step_4_status VARCHAR(255),
+    id INTEGER AUTO INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    project_steps INT,
     project_id INT,
     assigned_to INT,
+    FOREIGN KEY (step_id) REFERENCES steps(id),
     FOREIGN KEY (project_id) REFERENCES projects(id),
     FOREIGN KEY (assigned_to) REFERENCES persons(id)
   )
 SQL
-
 create_teams_table = <<-SQL
   CREATE TABLE IF NOT EXISTS teams(
-    id INTEGER PRIMARY KEY,
-    name VARCHAR(255),
-    organizer_1 INT,
-    organizer_2 INT,
-    organizer_3 INT,
-    project_id INT,
-    FOREIGN KEY (organizer_1) REFERENCES persons(id),
-    FOREIGN KEY (organizer_2) REFERENCES persons(id),
-    FOREIGN KEY (organizer_3) REFERENCES persons(id),
-    FOREIGN KEY (project_id) REFERENCES projects(id)
+    team_name VARCHAR(255) NOT NULL,
+    project_id INT NOT NULL,
+    person_id INT NOT NULL,
+    FOREIGN KEY(project_id) REFERENCES projects(id),
+    FOREIGN KEY(person_id) REFERENCES persons(id),
+    PRIMARY KEY(project_id, person_id)
   )
 SQL
 
 create_feedback_table = <<-SQL
   CREATE TABLE IF NOT EXISTS feedback(
-    id INTEGER PRIMARY KEY,
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
     timeliness TEXT,
     communication TEXT,
     follow_through TEXT,
@@ -70,7 +80,7 @@ create_feedback_table = <<-SQL
     written_from VARCHAR(255),
     given_to INT,
     project_id INT,
-    FOREIGN KEY(given_to) REFERENCES projects(id)
+    FOREIGN KEY(given_to) REFERENCES persons(id),
     FOREIGN KEY(project_id) REFERENCES projects(id)
   )
 SQL
@@ -78,6 +88,8 @@ SQL
 # create tables
 db.execute(create_project_table)
 db.execute(create_persons_table)
+db.execute(create_steps_table)
+db.execute(create_project_steps_table)
 db.execute(create_tasks_table)
 db.execute(create_teams_table)
 db.execute(create_feedback_table)
@@ -123,5 +135,8 @@ db.execute('INSERT INTO feedback
     ("always on time or lets us know if she will be late", "sometimes shy or hesitant to speak-up", "always follows through", "does not really engage conflict", "incredible effort", "Iris", 7, 1)')
 
 # explore ORM by retrieving database
+projects = db.execute("SELECT * FROM projects")
+puts projects.class
+p projects
 
 # add lots of projects
