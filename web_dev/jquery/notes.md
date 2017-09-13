@@ -1,6 +1,7 @@
 ----jquery Study Plan----
-
 30 min - DOM Manipulation The Web Developer Bootcamp Course by Colt Steele (Udemy)
+
+30 min - bootstrapping personal website
 
 15 min- Let's Learn JQuery on Back To School Web Development Course (Udemy)
 
