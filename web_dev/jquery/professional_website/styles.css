@@ -1,0 +1,160 @@
+#navbar{
+  border-left: 2px solid white;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom: 0px;
+  position: fixed;
+  width: 100%;
+  display: block;
+  font-color: white;
+}
+
+a:visited {
+  color: pink;
+}
+
+body{
+  background-image: url(background_photos/ales-krivec-217107.jpg);
+  background-size: cover;
+  color: white;
+  font-weight: bold;
+}
+
+#profilepic{
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.container1{
+  margin: auto;
+  position: relative;
+  width: 80%;
+  font-family: 'Kalam', cursive;
+  padding: 30px;
+}
+
+.container2{
+  margin: auto;
+  position: relative;
+  width: 80%;
+}
+
+.container3{
+  margin: auto;
+  position: relative;
+  display: inline-block;
+  width: 48%;
+  line-height: 170%;
+}
+
+.container4{
+  margin: auto;
+  position: relative;
+  display: inline-block;
+  width: 48%;
+  line-height: 170%;
+  left: 3%;
+}
+
+.container5{
+  margin: auto;
+  position: relative;
+  padding: 50px;
+}
+
+p, h1, h2, h3{
+  text-align: center;
+}
+
+h1{
+  font-size: 50px;
+  padding: 0;
+  margin: 0;
+}
+
+h2{
+  padding: 0;
+  margin: 0;
+}
+
+footer{
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Kalam', cursive;
+  font-size: 12px;
+}
+
+/*---Resume styling---*/
+
+#resumetitle{
+  padding: 40px;
+}
+
+.job{
+  text-decoration: underline white;
+}
+
+.container6{
+  margin: auto;
+  width: 80%;
+  padding: 5%;
+}
+
+#box1{
+  max-width: 50%;
+  width: 350px;
+  height: 550px;
+  border: 2px solid white;
+  background-color: rgba(193, 66, 66, 0.31);
+  display: inline-block;
+}
+
+#student_letter{
+  height: auto;
+  width: 400px;
+  max-width: 50%;
+}
+
+#nulpic{
+  height: auto;
+  width: 400px;
+  max-width: 50%;
+}
+
+#box2{
+  max-width: 50%;
+  width: 350px;
+  height: 550px;
+  border: 2px solid white;
+  background-color: rgba(193, 66, 66, 0.31);
+  display: inline-block;
+}
+
+#box3{
+  max-width: 50%;
+  width: 350px;
+  height: 550px;
+  border: 2px solid white;
+  background-color: rgba(193, 66, 66, 0.31);
+  display: inline-block;
+}
+
+#alliance_photo{
+  max-width: 50%;
+  border: 2px solid white;
+  height: auto;
+  width: 400px;
+}
+
+@media screen and (max-width: 1000px) {
+  #navbar{
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #box1, #box2, #box3{
+    height: auto;
+  }
+}
