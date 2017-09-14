@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Display Campuses</title>
+</head>
+<body>
+  <h1>Display Campuses</h1>
+  <p>Click here to display campuses</p>
+    <ul>
+      <% @students.each do |student| %>
+        <li><%= student['name'] %>, <%= student['campus'] %></li>
+      <% end %>
+    </ul>
+</body>
+</html>
+
