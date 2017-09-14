@@ -51,6 +51,10 @@ p, h1, h2, h3{
   color: rgba(129, 218, 245, 1)
 }
 
+.peachtext{
+  color: rgba(193, 66, 66, .7);
+}
+
 h1{
   font-size: 50px;
   padding: 0;
