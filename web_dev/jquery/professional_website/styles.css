@@ -3,8 +3,9 @@ a:visited {
 }
 
 body{
-  background-image: url(background_photos/ales-krivec-217107.jpg);
-  background-size: cover;
+  background: #3A1C71;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFAF7B, #D76D77, #3A1C71); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-weight: bold;
 }
 
@@ -30,28 +31,17 @@ body{
   color: white;
 }
 
-.container3{
-  margin: auto;
-  position: relative;
-  display: inline-block;
-  width: 48%;
-  line-height: 170%;
-}
 
-.container4{
+.container3, .container4{
   margin: auto;
   position: relative;
   display: inline-block;
   width: 48%;
   line-height: 170%;
   left: 3%;
+  padding: 10% 5%;
 }
 
-.container5{
-  margin: auto;
-  position: relative;
-  padding: 50px;
-}
 
 p, h1, h2, h3{
   text-align: center;
@@ -59,6 +49,10 @@ p, h1, h2, h3{
 
 .bluetext{
   color: rgba(129, 218, 245, 1)
+}
+
+.peachtext{
+  color: rgba(193, 66, 66, .7);
 }
 
 h1{
@@ -78,6 +72,7 @@ footer{
   font-family: 'Kalam', cursive;
   font-size: 12px;
   color: white;
+  padding-top: 10%;
 }
 
 /*---Resume styling---*/
