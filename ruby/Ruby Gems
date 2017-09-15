@@ -1,0 +1,10 @@
+-----Ruby Gems-----
+
+rspec: for rspec testing
+
+sinatra: gives you the foundation to write a very simple web server. Even 3 lines of code can create a ruby server.
+
+shotgun: allows you to reload sinatra without having to shut your program on and off every time you make a change.
+
+rake:
+
