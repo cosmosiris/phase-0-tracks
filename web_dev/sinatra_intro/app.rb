@@ -58,7 +58,9 @@ end
 get '/great_job/:name' do
   name = params[:name]
   if name
-    "Good job, #{name}"
+    "Good Job, #{name}"
   else
     "Good Job"
+  end
+  # the else doesnt work
 end
