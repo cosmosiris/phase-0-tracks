@@ -17,9 +17,6 @@ get '/students/new' do
   erb :new_student
 end
 
-get '/students/campuses' do
-  erb :update_student_info
-end
 
 # create new students via
 # a form
